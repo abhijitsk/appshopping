@@ -1,7 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:appshopping/screens/authentication/createAccount.dart';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:appshopping/screens/authentication/signup.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -12,6 +18,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -24,8 +32,9 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        useMaterial3: true
       ),
-      home: const CreateAccount(),
+      home:  const SignUp(),
     );
   }
 }

@@ -126,13 +126,7 @@ class SignUpState extends State<SignUp> {
                    
                         IconAnimation(),
                         
-                        // Image.asset(
-
-                        //   'images/icon.png',
-                        //   height: MediaQuery.of(context).size.height*0.15,
-                        //   width: MediaQuery.of(context).size.width*0.15,
-                        //   ),
-                      
+                        
           
                   // ========================================================================>
           
@@ -153,9 +147,9 @@ class SignUpState extends State<SignUp> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 50),
                         child: Container(
-                          
-                          decoration:myFocusNode.hasFocus?  decoration(): decoration1(),
                           height: 40,
+                          decoration:myFocusNode.hasFocus?  decoration(): decoration1(),
+                          
                           padding:  const EdgeInsets.only(left: 20),
                           child:   TextFormField(
                            
@@ -166,7 +160,7 @@ class SignUpState extends State<SignUp> {
                             decoration:  const InputDecoration(
                               focusColor: Colors.blue,
                               
-                              //hintText: 'Email address',
+                              hintText: 'Email address',
                               icon: Icon(Icons.email_outlined),
                               border: InputBorder.none),
                             
@@ -180,17 +174,20 @@ class SignUpState extends State<SignUp> {
                 // ========================================================================>
           
                       const SizedBox(height: 20,),
-                      Container(
-                        height: 30,
-                        padding: EdgeInsets.only(left: 0),
-                        color: Colors.transparent,
-                        child:const  Text(
-                          'Please enter your password here         ',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          )),
-                      ),
+                      // Container(
+                      //   height: 30,
+                      //   padding: EdgeInsets.only(left: 0),
+                      //   color: Colors.transparent,
+                      //   child:const  Text(
+                      //     'Please enter your password here         ',
+                      //     style: TextStyle(
+                      //       fontSize: 18,
+                      //       fontWeight: FontWeight.bold,
+                      //     )),
+                      // ),
+
+                      const SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       PasswordText(label: 'Password',controller: _password),
                       
                   // ========================================================================>

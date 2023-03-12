@@ -3,6 +3,7 @@ import 'package:appshopping/screens/authentication/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:appshopping/models/passwordText.dart';
 import 'package:appshopping/models/iconanimation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget{
 
@@ -98,12 +99,20 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: BoxDecoration(borderRadius:BorderRadius.circular(15),
       
                       color: Colors.brown),
-                    child: MaterialButton(onPressed: (){
+                    child: MaterialButton(onPressed: ()async{
                       if(_key.currentState!.validate()){
+                        var check;
 
+                        try{
+                          check = await FirebaseAuth.instance.signInWithEmailAndPassword
+                          (email: _email.text.trim(), password: _password.text.trim());
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successful')));
+                          
+                        }on FirebaseAuthException catch(e){
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.code)));
+                        }
                         
                         
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successful')));
                       }
                     },child: const Center(child: Text('Login')),)),
                     const SizedBox(height: 20,),

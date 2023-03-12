@@ -1,8 +1,8 @@
 
+import 'package:appshopping/screens/authentication/loginroute.dart';
 import 'package:flutter/material.dart';
-import 'package:appshopping/screens/authentication/signup.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 
 
 void main() async {
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true
       ),
-      home:  const SignUp(),
+      home:  const  LoginRoute(),
     );
   }
 }

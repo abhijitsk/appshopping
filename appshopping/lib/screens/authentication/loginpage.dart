@@ -106,7 +106,8 @@ class _LoginPageState extends State<LoginPage> {
                         try{
                           check = await FirebaseAuth.instance.signInWithEmailAndPassword
                           (email: _email.text.trim(), password: _password.text.trim());
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successful')));
+                          print(check);
+                          //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successful')));
                           
                         }on FirebaseAuthException catch(e){
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.code)));

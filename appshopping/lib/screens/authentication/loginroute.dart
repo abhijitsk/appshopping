@@ -4,6 +4,7 @@ import 'package:appshopping/screens/tabs/homepage.dart';
 import 'package:appshopping/screens/tabs/search.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:appshopping/screens/navigationbar.dart';
 
 class LoginRoute extends StatelessWidget{
   const LoginRoute({super.key});
@@ -16,7 +17,7 @@ class LoginRoute extends StatelessWidget{
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot){
           if(snapshot.hasData){
-            return HomePage();
+            return NavigationOptions();
           }else{
             return LoginPage();
           }

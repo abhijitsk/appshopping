@@ -3,10 +3,11 @@ import 'package:appshopping/screens/tabs/homepage.dart';
 import 'package:appshopping/screens/tabs/profile.dart';
 import 'package:appshopping/screens/tabs/search.dart';
 import 'package:flutter/material.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 
-class NavigationBar extends StatefulWidget{
-   NavigationBar({super.key,this.index = 0});
+class NavigationOptions extends StatefulWidget{
+   NavigationOptions({super.key,this.index = 0});
   int index;
 
    
@@ -15,10 +16,10 @@ class NavigationBar extends StatefulWidget{
 
   
   @override
-  State<NavigationBar> createState() => _NavigationBarState();
+  State<NavigationOptions> createState() => _NavigationOptionsState();
 }
 
-class _NavigationBarState extends State<NavigationBar> {
+class _NavigationOptionsState extends State<NavigationOptions> {
   int selectedindex = 0;
   @override
   Widget NavOptions(int currentIndex){
@@ -26,11 +27,11 @@ class _NavigationBarState extends State<NavigationBar> {
       case 0:
           return HomePage();
       case 1:
-          return CategoriesPage();
-      case 2:
-          return ProfilePage();
-      case 3:
           return SearchPage();
+      case 2:
+          return CategoriesPage();
+      case 3:
+          return ProfilePage();
 
         break;
       default:
@@ -42,8 +43,20 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: NavOptions(selectedindex),
-      
+      body: NavOptions(widget.index),
+      bottomNavigationBar: ConvexAppBar(items: const [
+        TabItem(title: 'Home',icon: Icons.home_filled),
+        TabItem(title: 'Search',icon: Icons.search),
+        TabItem(title: 'Categories',icon: Icons.category),
+        TabItem(title: 'Profile',icon: Icons.person),
+      ],
+      onTap: (index){
+        setState(() {
+          widget.index = index;
+        });
+      },
+      ),
+
     );
   }
 }
